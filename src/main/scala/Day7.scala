@@ -48,7 +48,6 @@ object Day7 extends App {
   println(f"free space = $free")
   val toDelete = need - free
   println(f"need to delete at least $toDelete")
-  println(free + toDelete)
 
   println(r1._2.filter(_._2 >= toDelete).minBy(_._2))
 }
