@@ -1,4 +1,4 @@
-name := "aoc2022d7"
+name := "aoc2022"
 
 version := "0.1"
 
@@ -9,7 +9,7 @@ scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Yexplicit-null
 coverageEnabled := true
 
 libraryDependencies ++= Seq(
-  "org.scalatest"     %% "scalatest"  % "3.2.15"  % Test
+  "org.scalatest" %% "scalatest"  % "3.2.15"  % Test
 )
 
 logBuffered := false
