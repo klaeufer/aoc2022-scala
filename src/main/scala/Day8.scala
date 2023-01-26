@@ -6,24 +6,39 @@ object Day8 extends App:
                   |25512
                   |65332
                   |33549
-                  |35390""".stripMargin('|').split('\n').map(_.toList.toSeq)
+                  |35390""".stripMargin('|').split('\n')
 
-  def transpose(arr: Seq[Seq[Char]]) = arr.map(_.toSeq).transpose
+  def transpose(arr: Seq[String]) = arr.map(_.toSeq).transpose.map(_.mkString)
 
   println(example.toSeq)
   println(transpose(example))
 
   // TODO
-  
-  def visible(row: String) =
-    row.zipWithIndex.foldLeft(Queue.empty[(Char, Int)]) { case (q, (t, i)) =>
+
+  def visibleInRow(row: String, indices: IterableOnce[Int]) =
+    row.zip(indices).foldLeft(Queue.empty[(Char, Int)]) { case (q, (t, i)) =>
       if q.isEmpty || q.last._1 < t then
         q :+ (t, i)
       else
         q
-    }
+    }.map(_._2).toSet
 
-  println(visible("12534176"))
+  def visibleFromLeft(row: String) = visibleInRow(row, row.indices)
 
-//  def visible(row: String, pos: Int) =
-//    row.toSeq.zipWithIndex.
+  def visibleFromRight(row: String) = visibleInRow(row.reverse, row.indices.reverse)
+
+  println(visibleFromLeft("12534176"))
+
+  println(visibleFromRight("12534176"))
+
+  def visible(input: Seq[String]) =
+    val v1 = input.zipWithIndex.map((r, i) => visibleFromLeft(r).union(visibleFromRight(r)).map(j => (i, j))).reduce((u, v) => u.union(v))
+    val v2 = transpose(input).zipWithIndex.map((r, i) => visibleFromLeft(r).union(visibleFromRight(r)).map(j => (j, i)))reduce((u, v) => u.union(v))
+    v1.union(v2).size
+
+  println(visible(example))
+
+  val input = scala.io.Source.fromFile("AdventOfCodeDay8Input.txt").getLines.toSeq
+
+  println(visible(input))
+
