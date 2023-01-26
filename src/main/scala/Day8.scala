@@ -24,12 +24,12 @@ object Day8 extends App:
     }
 
   def monotonicSubsequenceWithIndices[A](it: Iterable[A], indices: IterableOnce[Int] = Iterator.from(0))(implicit ord: Ordering[A]): Seq[(A, Int)] =
-    it.zip(indices).inits.toSeq.reverse.tail.map(_.max).distinctBy(_._1)
+    it.zip(indices).inits.toSeq.init.map(_.maxBy(_._1)).distinct
 
   val s = "12534176"
   println(monotonicSubsequenceWithIndices(s))
 
-  def visibleFromLeft(row: String) = monotonicSubsequenceWithIndices(row, row.indices).map(_._2)
+  def visibleFromLeft(row: String) = monotonicSubsequenceWithIndices(row).map(_._2)
 
   def visibleFromRight(row: String) = monotonicSubsequenceWithIndices(row.reverse, row.indices.reverse).map(_._2)
 
