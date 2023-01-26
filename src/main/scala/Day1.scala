@@ -12,7 +12,7 @@ object Day1 extends App:
     input.hasNext
   }.map { group =>
     group.map { line => line.toInt }.sum
-  }.toList.sorted
+  }.toSeq.sorted
 
   println(result.last)
 

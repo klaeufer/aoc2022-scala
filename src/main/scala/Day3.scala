@@ -1,8 +1,8 @@
 object Day3 extends App:
 
-  // relatively straightforward map/sum with a bit of string manipulation 
-  
-  val input = scala.io.Source.fromFile("AdventOfCodeDay3Input.txt").getLines.toList
+  // relatively straightforward map/sum with a bit of string manipulation
+
+  val input = scala.io.Source.fromFile("AdventOfCodeDay3Input.txt").getLines.toSeq
 
   def commonItem(s: String) =
     val (left, right) = s.splitAt(s.length / 2)
@@ -15,5 +15,5 @@ object Day3 extends App:
   val result1 = input.map(commonItem).map(priority).sum
   println(result1)
 
-  val result2 = input.sliding(3, 3).map{ case List(u, v, w) => u.intersect(v.intersect(w)) }.map(_(0)).map(priority).sum
+  val result2 = input.sliding(3, 3).map{ case Seq(u, v, w) => u.intersect(v.intersect(w)) }.map(_(0)).map(priority).sum
   println(result2)

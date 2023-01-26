@@ -27,7 +27,7 @@ object Day2 extends App:
 
   def move(a: Move, b: Move): Int = play(a.value, b.value)
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay2Input.txt").getLines.toList
+  val input = scala.io.Source.fromFile("AdventOfCodeDay2Input.txt").getLines.toSeq
 
   val result1 = input.map(s => move(Move.valueOf(s.substring(0, 1).nn), Move.valueOf(s.substring(2, 3).nn))).sum
 

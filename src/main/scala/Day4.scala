@@ -2,7 +2,7 @@ object Day4 extends App:
 
   // straightforward map/count
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay4Input.txt").getLines.toList
+  val input = scala.io.Source.fromFile("AdventOfCodeDay4Input.txt").getLines.toSeq
 
   val result1 = input
     .map(_.split(Array('-', ',')))
