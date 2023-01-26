@@ -1,13 +1,13 @@
-object Day7 extends App {
+object Day7 extends App:
+
+  // immutable file system traversal based on directory stack and result list
 
   // part 1
 
-  val input = scala.io.Source.fromFile("input7.txt").getLines.toList
+  val input = scala.io.Source.fromFile("AdventOfCodeDay7Input.txt").getLines.toList
 
   // regex patterns for matching input lines
   val cd = "\\$ cd (.+)".r
-  val ls = "\\$ ls".r
-  val dir = "dir (.+)".r
   val file = "(\\d+) (.+)".r
 
   // as a warmup, determine total sum of file sizes
@@ -51,4 +51,3 @@ object Day7 extends App {
   println(f"need to delete at least $toDelete")
 
   println(r1._2.filter(_._2 >= toDelete).minBy(_._2))
-}

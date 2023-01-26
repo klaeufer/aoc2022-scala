@@ -8,11 +8,13 @@ object Day8 extends App:
                   |33549
                   |35390""".stripMargin('|').split('\n').map(_.toList.toSeq)
 
-  def transpose(arr: Seq[Seq[Char]]) = arr.toSeq.map(_.toSeq).transpose
+  def transpose(arr: Seq[Seq[Char]]) = arr.map(_.toSeq).transpose
 
   println(example.toSeq)
   println(transpose(example))
 
+  // TODO
+  
   def visible(row: String) =
     row.zipWithIndex.foldLeft(Queue.empty[(Char, Int)]) { case (q, (t, i)) =>
       if q.isEmpty || q.last._1 < t then
