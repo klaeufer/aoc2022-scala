@@ -6,7 +6,7 @@ object Day5 extends App:
 
   val stackInput = input.takeWhile(_.nonEmpty)
 
-  val numStacks = 9 // TODO currently based on inspection of input - better to determine programmatically 
+  val numStacks = (stackInput.last.length + 1) / 4
   val stacks = Array.fill(numStacks)(collection.mutable.Stack.empty[Char])
 
   def initStacks() =
@@ -18,7 +18,7 @@ object Day5 extends App:
 
   val movesInput = input.drop(stackInput.length + 1)
 
-  val parsedMoves = movesInput.map(l => { val s = l.split(" ").nn.map(_.nn) ; (s(1).toInt, s(3).toInt, s(5).toInt) })
+  val parsedMoves = movesInput.map(l => { val s = l.split(' ') ; (s(1).toInt, s(3).toInt, s(5).toInt) })
 
   initStacks()
 
