@@ -29,7 +29,7 @@ object Day2 extends App:
 
   val input = scala.io.Source.fromFile("AdventOfCodeDay2Input.txt").getLines.toSeq
 
-  val result1 = input.map(s => move(Move.valueOf(s.substring(0, 1).nn), Move.valueOf(s.substring(2, 3).nn))).sum
+  val result1 = input.map(s => move(Move.valueOf(s.slice(0, 1)), Move.valueOf(s.slice(2, 3)))).sum
 
   println(result1)
 
@@ -50,7 +50,7 @@ object Day2 extends App:
     case (Move.C, Result.Z) => Move.X
 
   val result2 = input
-    .map(s => (Move.valueOf(s.substring(0, 1).nn), Result.valueOf(s.substring(2, 3).nn)))
+    .map(s => (Move.valueOf(s.slice(0, 1)), Result.valueOf(s.slice(2, 3))))
     .map((m, r) => move(m, chooseMove(m, r)))
     .sum
 

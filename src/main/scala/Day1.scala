@@ -6,7 +6,7 @@ object Day1 extends App:
   
   val result = Iterator.continually {
     input.takeWhile { line =>
-      line.trim.nn.nonEmpty
+      line.nonEmpty
     }
   }.takeWhile { _ =>
     input.hasNext
