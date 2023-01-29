@@ -9,6 +9,7 @@ scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked", "-Yexplicit-null
 coverageEnabled := true
 
 libraryDependencies ++= Seq(
+  "org.scalanlp" %% "breeze" % "2.1.0",
   "org.scalatest" %% "scalatest"  % "3.2.15"  % Test
 )
 
