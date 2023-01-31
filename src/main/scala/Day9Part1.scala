@@ -1,4 +1,4 @@
-object Day9 extends App:
+object Day9Part1 extends App:
 
   val example = """R 4
                   |U 4
