@@ -39,16 +39,12 @@ object Day9Breeze:
     case 'D' => m10
 
   // h = (0, 0), t = position relative to h, m = hori/vert/diag
-  // TODO review and possibly simplify
   def tailMove(t: Move, m: Move): Move =
-    if norm(m - t) < 1.5 then
+    val diff = m - t
+    if (diff dot diff) <= 2 then
       m00
-    else if m(0) == t(0) || m(1) == t(1) then
-      (m - t) / 2
-    else if norm(t) > 1.1 then
-      m00 - t
     else
-      m
+      convert(signum(diff), Int)
 
   // this is the heart of the solution as well as the hardest part:
   // need to pass original and resulting positions to be able to determine move for each segment
