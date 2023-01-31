@@ -4,21 +4,11 @@ import breeze.numerics.*
 object Day9Breeze:
 
   def main(args: Array[String]): Unit =
-
-    val input = scala.io.Source.fromFile("AdventOfCodeDay9Input.txt").getLines.toSeq
-    val moves = lines2moves(input)
-
-    // part 1
-
-    val ropeMoves1 = ropeMoves(createRope(2), moves)
-    val visitedByTail1 = positionsVisitedByTail(ropeMoves1)
-    println(s"Day 9 part 1: ${visitedByTail1.size}")
-
-    // part 2
-
-    val ropeMoves2 = ropeMoves(createRope(10), moves)
-    val visitedByTail2 = positionsVisitedByTail(ropeMoves2)
-    println(s"Day 9 part 2: ${visitedByTail2.size}")
+    scala.util.Using(scala.io.Source.fromFile("AdventOfCodeDay9Input.txt")) { source =>
+      val moves = lines2moves(source.getLines.toSeq)
+      printResult(moves, "Day 9 part 1", 2)
+      printResult(moves, "Day 9 part 2", 10)
+    }
 
   type Move = DenseVector[Int]
   type MoveN = (Move, Int)
@@ -71,3 +61,8 @@ object Day9Breeze:
 
   def positionsVisitedByTail(moves: Iterable[Rope]): Set[Move] =
     moves.map(_.last).toSet
+
+  def printResult(moves: Iterable[MoveN], label: String, ropeLength: Int) =
+    val rs = ropeMoves(createRope(ropeLength), moves)
+    val ts = positionsVisitedByTail(rs)
+    println(s"$label: ${ts.size}")
