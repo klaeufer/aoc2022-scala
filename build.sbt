@@ -10,7 +10,8 @@ coverageEnabled := true
 
 libraryDependencies ++= Seq(
   "org.scalanlp" %% "breeze" % "2.1.0",
-  "org.scalatest" %% "scalatest"  % "3.2.15"  % Test
+  "org.scalatest" %% "scalatest"  % "3.2.15"  % Test,
+  "org.scalatestplus" %% "scalacheck-1-17" % "3.2.15.0" % "test"
 )
 
 logBuffered := false
