@@ -10,6 +10,11 @@ object Day9Breeze:
       printResult(moves, "Day 9 part 2", 10)
     }
 
+  def printResult(moves: Iterable[MoveN], label: String, ropeLength: Int) =
+    val rs = ropeMoves(createRope(ropeLength), moves)
+    val ts = positionsVisitedByTail(rs)
+    println(s"$label: ${ts.size}")
+
   type Move = DenseVector[Int]
   type MoveN = (Move, Int)
   given CanEqual[DenseVector[Int], DenseVector[Int]] = CanEqual.derived
@@ -19,6 +24,7 @@ object Day9Breeze:
   val m10 = DenseVector(1, 0)
   val m11 = DenseVector(1, 1)
 
+  // rope head: absolute, tail segments: relative to predecessor
   type Rope = Seq[Move]
   def createRope(l: Int) = Seq.fill(l)(m00)
 
@@ -61,8 +67,3 @@ object Day9Breeze:
 
   def positionsVisitedByTail(moves: Iterable[Rope]): Set[Move] =
     moves.map(_.last).toSet
-
-  def printResult(moves: Iterable[MoveN], label: String, ropeLength: Int) =
-    val rs = ropeMoves(createRope(ropeLength), moves)
-    val ts = positionsVisitedByTail(rs)
-    println(s"$label: ${ts.size}")
