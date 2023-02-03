@@ -32,7 +32,7 @@ object Day7 extends App:
   println(q)
   println(r)
 
-  // process directories left in dir stack (equivalent of successive cd .. back to /)
+  // process directories still left in dir stack (equivalent of successive cd .. back to /)
   val r1 = q.foldLeft(q :+ (".DUMMY" -> -1), r) { case ((q, r), _) =>
     ((q.tail.head._1 -> (q.tail.head._2 + q.head._2)) +: q.tail.tail, q.head +: r)
   }
