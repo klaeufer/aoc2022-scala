@@ -20,6 +20,8 @@ object Day5 extends App:
 
   val parsedMoves = movesInput.map(l => { val s = l.split(' ') ; (s(1).toInt, s(3).toInt, s(5).toInt) })
 
+  // part 1
+
   initStacks()
 
   for (n, f, t) <- parsedMoves do
@@ -28,6 +30,8 @@ object Day5 extends App:
       stacks(t - 1).push(c)
 
   println(stacks.map(_.top).mkString)
+
+  // part 2
 
   initStacks()
 
