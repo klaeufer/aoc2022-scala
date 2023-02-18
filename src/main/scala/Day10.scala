@@ -2,10 +2,7 @@ object Day10:
 
   def main(args: Array[String]): Unit =
 
-    val filename1 = "AdventOfCodeDay10Example.txt"
-    val filename2 = "AdventOfCodeDay10Input.txt"
-
-    val input = scala.io.Source.fromFile(filename2).getLines
+    val input = scala.io.Source.fromFile("AdventOfCodeDay10Input.txt").getLines
 
     val addx = "addx (-?\\d+)".r
 
@@ -26,15 +23,13 @@ object Day10:
     val offset = 20
     val cycleLength = 40
     val length = execution.length
-
-    val cycles = Iterator.iterate(offset)(s => s + cycleLength).takeWhile(_ <= length)
+    val cycles = Iterator.range(offset, length, cycleLength)
 
     println(cycles.map(p => execution(p - 1)._1 * p).sum)
 
     // part 2
 
     val rowLength = 40
-
     val crt = execution.zipWithIndex.map { case ((x, _), p) =>
       if math.abs(x - (p % rowLength)) <= 1 then '#' else '.'
     }
