@@ -1,19 +1,23 @@
 object Day1 extends App:
 
+  /** Partitions an iterator into chunks of consecutive elements for which the predicate holds. */
+  extension [A](it: Iterator[A])
+    def chunkBy(p: A => Boolean) = Iterator
+      .continually(it.takeWhile(p))
+      .takeWhile(_ => it.hasNext)
+
   val input = scala.io.Source.fromFile("AdventOfCodeDay1Input.txt").getLines
 
-  // TODO continually/takeWhile combination refers to source iterator twice - is there a more straightforward way? 
-  
-  val result = Iterator.continually {
-    input.takeWhile { line =>
-      line.nonEmpty
-    }
-  }.takeWhile { _ =>
-    input.hasNext
-  }.map { group =>
-    group.map { line => line.toInt }.sum
-  }.toSeq.sorted
+  // iterate over inventories of consecutive nonempty lines
+  // this stores only one Int per elf in memory
+  val result = input
+    .chunkBy(_.nonEmpty)
+    .map(_.map(_.toInt).sum)
+    .toIndexedSeq
+    .sorted
 
-  println(result.last)
+  println(s"Day 1 part 1: ${result.last}")
 
-  println(result.takeRight(3).sum)
+  println(s"Day 1 part 2: ${result.takeRight(3).sum}")
+
+  println(Iterator(5, 2, 4, 3, 8, 10, 7, 7, 7, 12, 14, 20, 3).chunkBy(_ % 2 == 0).map(_.length).toSeq)
