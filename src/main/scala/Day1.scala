@@ -17,7 +17,6 @@ object Day1 extends App:
     .sorted
 
   println(s"Day 1 part 1: ${result.last}")
-
   println(s"Day 1 part 2: ${result.takeRight(3).sum}")
 
   println(Iterator(5, 2, 4, 3, 8, 10, 7, 7, 7, 12, 14, 20, 3).chunkBy(_ % 2 == 0).map(_.length).toSeq)
