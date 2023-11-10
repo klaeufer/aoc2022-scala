@@ -2,7 +2,7 @@ object Day3 extends App:
 
   // relatively straightforward map/sum with a bit of string manipulation
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay3Input.txt").getLines.toSeq
+  val input = scala.io.Source.fromFile("data/AdventOfCodeDay3Input.txt").getLines.toSeq
 
   def commonItem(s: String) =
     val (left, right) = s.splitAt(s.length / 2)

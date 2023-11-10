@@ -2,7 +2,7 @@ object Day10:
 
   def main(args: Array[String]): Unit =
 
-    val input = scala.io.Source.fromFile("AdventOfCodeDay10Input.txt").getLines
+    val input = scala.io.Source.fromFile("data/AdventOfCodeDay10Input.txt").getLines
 
     val execution = Iterator
       .iterate((1, Option.empty[Int])) {

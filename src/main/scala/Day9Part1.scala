@@ -64,6 +64,6 @@ object Day9Part1 extends App:
   val result0 = lines2moves(example).scanLeft(Seq(r2)) { case (ms, (d, n)) => moveN(ms.last, d, n) }.flatten
   println(result0.map(_.last).toSet.size)
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay9Input.txt").getLines.toSeq
+  val input = scala.io.Source.fromFile("data/AdventOfCodeDay9Input.txt").getLines.toSeq
   val result1 = lines2moves(input).scanLeft(Seq(r2)) { case (ms, (d, n)) => moveN(ms.last, d, n) }.flatten
   println(result1.map(_.last).toSet.size)

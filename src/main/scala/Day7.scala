@@ -4,7 +4,7 @@ object Day7 extends App:
 
   // part 1
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay7Input.txt").getLines.toSeq
+  val input = scala.io.Source.fromFile("data/AdventOfCodeDay7Input.txt").getLines.toSeq
 
   // regex patterns for matching input lines
   val cd = "\\$ cd (.+)".r

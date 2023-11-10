@@ -2,7 +2,7 @@ object Day6 extends App:
 
   // easy when using sliding and zipWithIndex
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay6Input.txt").mkString
+  val input = scala.io.Source.fromFile("data/AdventOfCodeDay6Input.txt").mkString
 
   def f(input: String) = input.sliding(4).indexWhere(_.toSet.size == 4) + 4
 

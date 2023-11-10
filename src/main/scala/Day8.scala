@@ -52,7 +52,7 @@ object Day8 extends App:
 
   println(visibleFromOutside(example).toSeq.sorted)
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay8Input.txt").getLines.toSeq
+  val input = scala.io.Source.fromFile("data/AdventOfCodeDay8Input.txt").getLines.toSeq
 
   println(visibleFromOutside(input).size)
 

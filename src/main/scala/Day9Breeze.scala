@@ -4,7 +4,7 @@ import breeze.numerics.*
 object Day9Breeze:
 
   def main(args: Array[String]): Unit =
-    scala.util.Using(scala.io.Source.fromFile("AdventOfCodeDay9Input.txt")) { source =>
+    scala.util.Using(scala.io.Source.fromFile("data/AdventOfCodeDay9Input.txt")) { source =>
       val moves = lines2moves(source.getLines.toSeq)
       printResult(moves, "Day 9 part 1", 2)
       printResult(moves, "Day 9 part 2", 10)

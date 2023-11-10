@@ -2,7 +2,7 @@ object Day5 extends App:
 
   // mutable stacks
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay5Input.txt").getLines.toSeq
+  val input = scala.io.Source.fromFile("data/AdventOfCodeDay5Input.txt").getLines.toSeq
 
   val stackInput = input.takeWhile(_.nonEmpty)
 

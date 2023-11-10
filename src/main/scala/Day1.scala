@@ -6,7 +6,7 @@ object Day1 extends App:
       .continually(it.takeWhile(p))
       .takeWhile(_ => it.hasNext)
 
-  val input = scala.io.Source.fromFile("AdventOfCodeDay1Input.txt").getLines
+  val input = scala.io.Source.fromFile("data/AdventOfCodeDay1Input.txt").getLines
 
   // iterate over inventories of consecutive nonempty lines
   // this stores only one Int per elf in memory
