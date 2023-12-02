@@ -4,7 +4,7 @@ object Day1 extends App:
   extension [A](it: Iterator[A])
     def splitWhere(p: A => Boolean) = Iterator
       .continually(it.takeWhile(p))
-      .takeWhile(_ => it.hasNext)
+      .takeWhile(a => it.hasNext)
 
   val input = scala.io.Source.fromFile("data/AdventOfCodeDay1Input.txt").getLines
 
@@ -13,8 +13,7 @@ object Day1 extends App:
   val result = input
     .splitWhere(_.nonEmpty)
     .map(_.map(_.toInt).sum)
-    .toIndexedSeq
-    .sorted
+    .foldLeft(Seq.empty[Int])(_.prepended(_).sorted.takeRight(3))
 
   println(s"Day 1 part 1: ${result.last}")
   println(s"Day 1 part 2: ${result.takeRight(3).sum}")
